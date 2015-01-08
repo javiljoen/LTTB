@@ -83,3 +83,16 @@ LTTB = function(data, n_bins) {
   
   return(out)
 }
+
+#' Time series data set for testing
+#' 
+#' This is one of the data sets used to illustrate the original
+#' implementation of LTTB. It was downloaded from
+#' \url{http://flot.base.is/},
+#' converted from JSON to tab-delimited format,
+#' and read into R with the command
+#' \code{timeseries = as.matrix(read.delim(datafile, as.is=TRUE))}.
+#' 
+#' @format Matrix of two columns (X and Y) and 5000 rows
+#' @source \url{http://flot.base.is/}
+'timeseries'

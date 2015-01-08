@@ -15,7 +15,7 @@ Sveinn Steinarsson. 2013.
 *Downsampling Time Series for Visual Representation.*
 MSc thesis. University of Iceland.
 
-The test data set `demo_data.tab` was downloaded from
+The R package comes with a test data set downloaded from
 <http://flot.base.is/>
 and converted from JSON to tab-delimited format.
 The resulting graphs look pretty similar to me.
