@@ -19,3 +19,22 @@ The test data set `demo_data.tab` was downloaded from
 <http://flot.base.is/>
 and converted from JSON to tab-delimited format.
 The resulting graphs look pretty similar to me.
+
+Installation
+------------
+
+In R:
+
+```{r}
+library(devtools)
+install_github('javiljoen/LTTB')
+```
+
+Usage
+-----
+
+```{r}
+library(LTTB)
+?LTTB
+example(LTTB)
+```

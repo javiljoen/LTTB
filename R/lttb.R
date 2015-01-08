@@ -1,13 +1,37 @@
+#' Downsample a time series using LTTB
+#' 
+#' Downsample a time series using Steinarsson's
+#' \emph{Largest-Triangle-Three-Buckets} algorithm
+#' 
+#' For a description of the algorithm, see
+#' \url{https://github.com/sveinn-steinarsson/flot-downsample}
+#' and
+#' Sveinn Steinarsson. 2013.
+#' \emph{Downsampling Time Series for Visual Representation.}
+#' MSc thesis. University of Iceland.
+#' 
+#' @param data Numeric matrix with 2 columns, sorted by the first column
+#' @param n_bins Number of bins used for downsampling
+#' @return matrix with the same columns as \code{data} but at most
+#'   \code{n_bins + 2} rows (fewer if \code{n_bins + 2 > nrow(data)})
+#' @examples
+#' data(timeseries)
+#' downsampled_timeseries = LTTB(timeseries, n_bins=198)
+#' with(as.data.frame(downsampled_timeseries),
+#'      plot(X, Y, type='l'))
+#' 
+#' \dontrun{
+#' library(ggplot2)
+#' qplot(X, Y, data=as.data.frame(timeseries), geom='line') +
+#'   geom_line(data=as.data.frame(downsampled_timeseries), colour=I('blue'))
+#' }
+#' @export
 LTTB = function(data, n_bins) {
-  ## Downsample a time series using Steinarsson's
-  ## Largest-Triangle-Three-Buckets algorithm
-  ## https://github.com/sveinn-steinarsson/flot-downsample
-  ## Sveinn Steinarsson. 2013.
-  ## Downsampling Time Series for Visual Representation.
-  ## MSc thesis. University of Iceland.
   
   area_of_triangle = function(A, B, C) {
-    ## Area of a triangle given duples of vertex coordinates
+    #' Area of a triangle from duples of vertex coordinates
+    #' @param A,B,C numeric vectors of length 2
+    #' @return numeric vector of length 1
     return(0.5 * abs((A[1] - C[1]) * (B[2] - A[2]) - (A[1] - B[1]) * (C[2] - A[2])))
   }
   
