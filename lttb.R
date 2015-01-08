@@ -11,9 +11,14 @@ LTTB = function(data, n_bins) {
     return(0.5 * abs((A[1] - C[1]) * (B[2] - A[2]) - (A[1] - B[1]) * (C[2] - A[2])))
   }
   
-  if (ncol(data) != 2) {
-    stop('Input must be a 2-column matrix (sorted by x-value)')
+  if (ncol(data) != 2 | !identical(sort(data[, 1]), data[,1])) {
+    stop('Input must be a 2-column matrix sorted by the first column')
   }
+
+  if (class(data) == 'data.frame') {
+    data = as.matrix(data)
+  }
+
   N = nrow(data)
   bin_width = (N - 2) / n_bins
   
