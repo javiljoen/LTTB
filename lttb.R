@@ -22,6 +22,10 @@ LTTB = function(data, n_bins) {
   N = nrow(data)
   bin_width = (N - 2) / n_bins
   
+  if (N <= n_bins + 2) {
+    return(data)
+  }
+
   ## set up output
   out = matrix(NA, nrow=(n_bins + 2), ncol=ncol(data))
   colnames(out) = colnames(data)
