@@ -44,7 +44,7 @@ LTTB = function(data, n_bins) {
   }
 
   N = nrow(data)
-  bin_width = (N - 2) / n_bins
+  bin_width = floor((N - 2) / n_bins)
   
   if (N <= n_bins + 2) {
     return(data)
